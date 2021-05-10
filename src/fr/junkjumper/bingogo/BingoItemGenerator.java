@@ -1,20 +1,13 @@
+package fr.junkjumper.bingogo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Material;
 
-public class Launch {
+public class BingoItemGenerator {
 
 	public static List<Material> l = new ArrayList<>();
-	public static List<Material> bingo = new ArrayList<>();
-
-	public static void getUnusedItems() {
-		for(Material m : Material.values()) {
-			if(m.toString().contains("WALL")) {
-				System.out.println(m);
-			}
-		}
-	}
 	
 	@SuppressWarnings("deprecation")
 	public static void fillList() {
@@ -106,30 +99,21 @@ public class Launch {
 		return (int) (Math.random()*getL().size());
 	}
 
-	public static void main(String[] args) {
+	public static List<Material> generate9items() {
+		List<Material> bingo = new ArrayList<>();
 		fillList();
 		for (int i = 0; i < 9; ++i) {
 			bingo.add(l.get(getRandomMaterial()));
 		}
-
-		
-		for (int i = 0; i < 9; ++i) {
-			System.out.println(bingo.get(i));
-		}
+		return bingo;
 	}
 
 	/**
 	 * @return the l
 	 */
-	public static List<Material> getL() {
+	private static List<Material> getL() {
 		return l;
 	}
 
-	/**
-	 * @param l the l to set
-	 */
-	public static void setL(List<Material> l) {
-		Launch.l = l;
-	}
-
+	
 }

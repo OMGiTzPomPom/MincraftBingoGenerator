@@ -1,0 +1,7 @@
+name: Bingo
+version: 1.0
+author: JunkJumper
+main: fr.junkjumper.bingogo.Main
+commands:
+  bingo:
+    description: Enable bingo
