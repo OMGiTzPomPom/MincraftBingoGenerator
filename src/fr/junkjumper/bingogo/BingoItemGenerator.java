@@ -99,11 +99,15 @@ public class BingoItemGenerator {
 		return (int) (Math.random()*getL().size());
 	}
 
-	public static List<Material> generate9items() {
-		List<Material> bingo = new ArrayList<>();
+	public static List<BingoItem> generateItems() {
+		return generateItems(9);
+	}
+	
+	public static List<BingoItem> generateItems(int amount) {
+		List<BingoItem> bingo = new ArrayList<>();
 		fillList();
-		for (int i = 0; i < 9; ++i) {
-			bingo.add(l.get(getRandomMaterial()));
+		for (int i = 0; i < amount; ++i) {
+			bingo.add(new BingoItem(l.get(getRandomMaterial())));
 		}
 		return bingo;
 	}
