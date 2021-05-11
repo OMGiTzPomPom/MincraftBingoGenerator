@@ -67,9 +67,11 @@ public class CommandBingo implements CommandExecutor {
 		} else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("item")) {
 			if(args[1].equalsIgnoreCase("get")) {
 				liste.get(Integer.parseInt(args[2])).itemPicked();
+				Bukkit.broadcastMessage("§5L'objet " + liste.get(Integer.parseInt(args[2])).getM().toString() + "vient d'être récupéré par " + sender.getName() + ".");
 				r = true;
 			} else if(args[1].equalsIgnoreCase("unget")) {
 				liste.get(Integer.parseInt(args[2])).itemUnpicked();
+				Bukkit.broadcastMessage("§5" + sender.getName() + " vient de retirer l'objet " +  liste.get(Integer.parseInt(args[2])).getM().toString() + "de la liste des objets récupérés. Tapez §f/bingo see §5 pour voir la liste actualisée !");
 				r = true;
 			} else {
 				r = false;
