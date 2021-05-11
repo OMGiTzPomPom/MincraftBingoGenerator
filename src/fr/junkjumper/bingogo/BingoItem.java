@@ -29,6 +29,16 @@ public class BingoItem {
 	
 	@Override
 	public String toString() {
-		return this.m.toString();
+		String sb = "";
+		String[] toWork = m.toString().split(", ");
+
+		for(int i=0; i < toWork.length; ++i) {
+			if(m.isBlock()) {
+				sb += m.name().replace("_", " ") + "\n";
+			} else {
+				sb += m.name().replace("_", " ") + "\n";
+			}
+		}
+		return sb;
 	}
 }

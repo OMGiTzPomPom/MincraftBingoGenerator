@@ -3,6 +3,7 @@ package fr.junkjumper.bingogo;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.bukkit.Material;
 
 public class BingoItemGenerator {
@@ -99,10 +100,6 @@ public class BingoItemGenerator {
 		return (int) (Math.random()*getL().size());
 	}
 
-	public static List<BingoItem> generateItems() {
-		return generateItems(9);
-	}
-	
 	public static List<BingoItem> generateItems(int amount) {
 		List<BingoItem> bingo = new ArrayList<>();
 		fillList();
