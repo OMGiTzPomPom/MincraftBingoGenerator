@@ -18,7 +18,7 @@ It only display N blocks or items to find in a Minecraft Game.
 - None
 
 ## Commands
-- ``/bingo generate``
+- ``/bingo generate amount``
 - ``/bingo see``
 - ``/bingo reset``
 - ``/bingo set ID``
@@ -27,7 +27,7 @@ It only display N blocks or items to find in a Minecraft Game.
 ## How It Works
 
 ### Starting a bingo
-You just have to enter ``/bingo generate {amount}``. It will broadcast to all players the "N amount" items to collect. If a game is currently running, you will not be able to generate another one unless if you enter ``/bingo reset``. If the {amount} is not specified, it will be set to the 9 by default.
+You just have to enter ``/bingo generate amount``. It will broadcast to all players the "N amount" items to collect. If a game is currently running, you will not be able to generate another one unless if you enter ``/bingo reset``.
 
 ### Check out the items
 By entering ``/bingo see``, you will see on your proper chat the items to collect.

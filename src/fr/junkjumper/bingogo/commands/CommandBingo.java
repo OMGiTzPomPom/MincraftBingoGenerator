@@ -15,34 +15,25 @@ public class CommandBingo implements CommandExecutor {
 
 	public static List<BingoItem> liste = new ArrayList<>();
 	private boolean active = false;
-	
-	public static String material(String s) {
-		String sb = "";
-		String[] t = s.split(",");
-		for (int i = 0; i < t.length; ++i) {
-			sb += t[i] + " ";
-		}
-		
-		return sb.substring(0, sb.length()-1);
-	}
+
 
 	public String display(List<BingoItem> m) {
 		String sb = "";
 		String subS = m.toString().substring(1, m.toString().length()-1);
-		String[] toWork = subS.split(",");
+		String[] toWork = subS.split(", ");
 		
 		for(int i=0; i < toWork.length; ++i) {
 			if(m.get(i).getM().isBlock()) {
 				if(!m.get(i).isGet()) {
-					sb += "§a BLOCK Number " + (i+1) + "  - " + material(toWork[i]) + "\n";
+					sb += "§a BLOCK Number " + (i+1) + " - " + toWork[i] + "\n";
 				} else {
-					sb += "§m BLOCK Number " + (i+1) + "  - " + material(toWork[i]) + "\n";
+					sb += "§m BLOCK Number " + (i+1) + " - " + toWork[i] + "\n";
 				}
 			} else {
 				if(!m.get(i).isGet()) {
-					sb += "§e ITEM Number " + (i+1) + "  - " + material(toWork[i]) + "\n";
+					sb += "§e ITEM Number " + (i+1) + " - " + toWork[i] + "\n";
 				} else {
-					sb += "§m ITEM Number " + (i+1) + "  - " + material(toWork[i]) + "\n";
+					sb += "§m ITEM Number " + (i+1) + " - " + toWork[i] + "\n";
 				}
 			}
 		}

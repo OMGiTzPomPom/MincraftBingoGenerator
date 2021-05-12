@@ -29,16 +29,9 @@ public class BingoItem {
 	
 	@Override
 	public String toString() {
-		String sb = "";
-		String[] toWork = m.toString().split(", ");
+		String s = m.toString().replace("_", " ");
+		String ss = s.replaceAll("LEGACY ", "");
+		return ss.substring(0, 1) + ss.toLowerCase().substring(1);
 
-		for(int i=0; i < toWork.length; ++i) {
-			if(m.isBlock()) {
-				sb += m.name().replace("_", " ") + "\n";
-			} else {
-				sb += m.name().replace("_", " ") + "\n";
-			}
-		}
-		return sb;
 	}
 }
