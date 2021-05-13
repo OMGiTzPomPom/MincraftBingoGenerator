@@ -2,11 +2,14 @@ package fr.junkjumper.bingogo.commands;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
 
 import fr.junkjumper.bingogo.BingoItem;
 import fr.junkjumper.bingogo.BingoItemGenerator;
@@ -19,7 +22,7 @@ public class CommandBingo implements CommandExecutor {
 
 	public String display(List<BingoItem> m) {
 		String sb = "";
-		String subS = m.toString().substring(1, m.toString().length()-1);
+		String subS = m.toString();
 		String[] toWork = subS.split(", ");
 		
 		for(int i=0; i < toWork.length; ++i) {
@@ -69,9 +72,27 @@ public class CommandBingo implements CommandExecutor {
 				liste.get(Integer.parseInt(args[2])-1).itemUnpicked();
 				Bukkit.broadcastMessage("§5" + sender.getName() + " vient de retirer l'objet " +  liste.get(Integer.parseInt(args[2])-1).getM().toString() + " de la liste des objets récupérés. Tapez §f/bingo see §5 pour voir la liste actualisée !");
 				r = true;
-			} else {
+			}
+			else {
 				r = false;
 			}
+		} else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("tpall")) {
+			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+			int tmpI = 1;
+			for(Player p : Bukkit.getOnlinePlayers()) {
+				Bukkit.broadcastMessage("§5Téléportation de " + p.getName() + " vers le monde de la partie en cours (" + tmpI + "/)" + Bukkit.getOnlinePlayers().size() + ")");
+				Bukkit.dispatchCommand(console, "mvtp " + p.getName() + " game");
+				try {
+					TimeUnit.MILLISECONDS.sleep(200);
+					++tmpI;
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+			r = true;
 		}
 		return r;
 	}
