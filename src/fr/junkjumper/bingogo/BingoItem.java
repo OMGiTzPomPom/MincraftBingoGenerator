@@ -27,11 +27,4 @@ public class BingoItem {
 		this.get = false;
 	}
 	
-	@Override
-	public String toString() {
-		String s = m.toString().replace("_", " ");
-		String ss = s.replaceAll("LEGACY ", "");
-		return ss.substring(0, 1) + ss.toLowerCase().substring(1);
-
-	}
 }
