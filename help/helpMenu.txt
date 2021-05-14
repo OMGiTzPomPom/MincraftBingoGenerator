@@ -1,0 +1,9 @@
+§a//===============================================\\
+§a||                 §eBingo v1.1.2                  ||
+§a||                §dBy OMGItZPomPom                ||
+§a\\===============================================//
+
+§3/bingo help generate
+§3/bingo help see
+§3/bingo help item
+§3/bingo help tpall

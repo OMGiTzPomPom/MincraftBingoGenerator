@@ -1,0 +1,9 @@
+§a//===============================================\\
+§a||                 §eBingo v1.1.2                  ||
+§a||                §dBy OMGItZPomPom                ||
+§a||            §e/bingo item [get|unget] id         ||
+§a\\===============================================//
+
+§fCette commande permet de spécifier quel item a été récupéré ou non récupéré par un joueur.
+§6/bingo item get id §f va marquer l'item numéro §6id §f comme récupéré et va l'annoncer à tous les joueurs.
+§6/bingo item unget id §f va marquer l'item numéro §6id §f comme non récupéré et va l'annoncer à tous les joueurs.

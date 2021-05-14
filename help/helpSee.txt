@@ -1,0 +1,7 @@
+§a//===============================================\\
+§a||                 §eBingo v1.1.2                  ||
+§a||                §dBy OMGItZPomPom                ||
+§a||                  §e/bingo see                   ||
+§a\\===============================================//
+
+§fCette commande permet à un joueur de voir l'état des items récupérés et ceux restants.

@@ -1,0 +1,9 @@
+§a//===============================================\\
+§a||                 §eBingo v1.1.2                  ||
+§a||                §dBy OMGItZPomPom                ||
+§a||            §e/bingo tpall {worldName}           ||
+§a\\===============================================//
+
+§fCette commande permet de téléporter tous les joueurs vers un certain monde.
+§fSi le §6{worldName} §fn'est pas précisé, tous les joueurs seront téléportés vers le monde par défault "game".
+§fSi le §6{worldName} §fest pas précisé, tous les joueurs seront téléportés vers le §6{worldName} monde.

@@ -1,0 +1,9 @@
+§a//===============================================\\
+§a||                 §eBingo v1.1.2                  ||
+§a||                §dBy OMGItZPomPom                ||
+§a||             §e/bingo generate {amount}          ||
+§a\\===============================================//
+
+§fCette commande génère N items à chercher pour la partie. Si §6{amount} §fn'est pas précisé, le bingo sera généré avec 9 items à aller chercher.
+§fSi une partie est en cours, le bingo ne sera pas regénéré.
+§fPour regénérer une partie, il faut entrer la commande §6/bingo reset§f.
