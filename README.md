@@ -1,42 +1,51 @@
-# Minecraft Bingo Generator
-By OMGItZPomPom
+# Minecraft Bingo Generator - By OMGItZPomPom
 
-This minecraft Bingo Generator is to help training for bingos.
-It only display N blocks or items to find in a Minecraft Game.
+Ce plugin permet de s'entrainer à jouer à une partie de bingo sur Minecraft.
+Cela ne fait qu'écrire dans le chat des joueurs les différentes instructions.
+Ce plugin ne peut générer qu'une partie par serveurs.
 
-## Table of content
-1. Requirements
+## Table des matières
+1. Pré-requis
 2. Permissions
-3. Commands
-4. How It Works
+3. Commandes
+4. Comment l'utiliser
+5. Licence
 
+## 1 - Pré-requis
+- Un serveur sous Spigot 1.16.5 ou plus récent.
 
-## Requirements
-- Spigot 1.16.5
+## 2 - Permissions
+- Aucune
 
-## Permissions
-- None
-
-## Commands
-- ``/bingo generate amount``
+## 3 - Commandes
+- ``/bingo generate {amount}``
 - ``/bingo see``
 - ``/bingo reset``
 - ``/bingo set ID``
 - ``/bingo unset ID``
 
-## How It Works
+## 4 - Comment l'utiliser
 
-### Starting a bingo
-You just have to enter ``/bingo generate amount``. It will broadcast to all players the "N amount" items to collect. If a game is currently running, you will not be able to generate another one unless if you enter ``/bingo reset``.
+Vous pouvez entrer ``/bingo help pour avoir des explications In-Game``. Mais voici un rapide guide :
 
-### Check out the items
-By entering ``/bingo see``, you will see on your proper chat the items to collect.
+### 4.1 - Démmarer une partie
+``/bingo generate {amount}`` va générer N items à chercher pour la partie. Si ``{amount}`` n'est pas précisé, le bingo sera généré avec 9 items à aller chercher. Si une partie est en cours, le bingo ne sera pas regénéré. Pour regénérer une partie, il faut entrer la commande ``/bingo reset``.
 
-### Reset a Game
-By entering ``/bingo reset``, you will be abble to reset a game before generate another one.
+### 4.2 - Visualiser les items d'une partie
+``/bingo see`` vous permettra de voir tous les items de la partie à aller chercher.
 
-### Set and unset items
+### 4.3 - Réinitialiser une partie
+``/bingo reset`` réinitialisera la partie et vous permettra d'en re-générer une.
 
-By entering ``/bingo set ID``, you will mark the item owned. By entering ``/bingo unset ID``, you will unmark the item from the list.
-Any of these two commands broadcast the items to the other players.
+### 4.4 - Marquer des items comme obtenus et les enlever
 
+- ``/bingo set ID`` va marquer l'item numéro ``id`` comme récupéré et va l'annoncer à tous les joueurs.
+- ``bingo unset ID`` va marquer l'item numéro ``id`` comme non récupéré et va l'annoncer à tous les joueurs.
+
+### 4.5 - Téléporter tous les joueurs dans un monde
+
+``/bingo tpall {world}`` va téléporter tous les joueurs dans le ``{world}`` monde si il est spécifié. Sinon, ils seront téléportés vers le monde ``game``.
+
+## 5 - Licence
+
+[![logo](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/) Ce plugin est disponible sous licence [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (Voir [LICENSE.md](https://github.com/JunkJumper/MincraftBingoGenerator/blob/master/LICENSE.md)).
