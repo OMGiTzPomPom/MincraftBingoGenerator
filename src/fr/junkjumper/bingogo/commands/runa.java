@@ -1,17 +1,17 @@
 package fr.junkjumper.bingogo.commands;
 
-import java.util.List;
-
-
-import fr.junkjumper.bingogo.BingoItem;
-import fr.junkjumper.bingogo.BingoItemGenerator;
+import fr.junkjumper.bingogo.Bingo;
 
 public class runa {
 	
+
 	public static void main(String[] args) {
-		List<BingoItem> liste = BingoItemGenerator.generateItems(9);
-		System.out.println(liste);
 		
+		Bingo b = new Bingo();
+		b.generateBingo(9);
+		
+		System.out.println("main start testing for sysout");
+
 		
 	}
 

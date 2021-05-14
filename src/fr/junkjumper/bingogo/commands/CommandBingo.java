@@ -1,66 +1,70 @@
 package fr.junkjumper.bingogo.commands;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import fr.junkjumper.bingogo.Bingo;
-import fr.junkjumper.bingogo.BingoItem;
 
 public class CommandBingo implements CommandExecutor {
 
 	private Bingo bingo = new Bingo(); 
 
-
-	public String display(List<BingoItem> m) {
-		String sb = "";
-		String subS = m.toString();
-		String[] toWork = subS.split(", ");
-		
-		for(int i=0; i < toWork.length; ++i) {
-			if(m.get(i).getM().isBlock()) {
-				if(!m.get(i).isGet()) {
-					sb += "§a BLOCK Number " + (i+1) + " - " + toWork[i] + "\n";
-				} else {
-					sb += "§m BLOCK Number " + (i+1) + " - " + toWork[i] + "\n";
-				}
-			} else {
-				if(!m.get(i).isGet()) {
-					sb += "§e ITEM Number " + (i+1) + " - " + toWork[i] + "\n";
-				} else {
-					sb += "§m ITEM Number " + (i+1) + " - " + toWork[i] + "\n";
-				}
-			}
-		}
-		return sb;
+	private static int getArgc(Command cmd) {
+		return cmd.toString().split(" ").length;
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
 		boolean r = false;
+		
+		/***********************
+		 * /bingo generate {n} *
+		 ***********************/
 		if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("generate")) {
 			if(!bingo.isActive()) {
-				bingo.generateBingo(Integer.parseInt(args[1]));
+				if(getArgc(cmd) == 2) {
+					bingo.generateBingo(9);
+				} else {
+					bingo.generateBingo(Integer.parseInt(args[1]));
+				}
 				Bukkit.broadcastMessage("§bLe bingo est généré :"); 
 				Bukkit.broadcastMessage(bingo.toString());
 				r = true;
 			} else {
 				sender.sendMessage("§4Un bingo est déjà en cours d'utilisation, pour le réinitialisé, faites /bingo reset");
+				r = true;
 			}
-		} else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("see")) {
+		}
+		
+		/**************
+		 * /bingo see *
+		 **************/
+		else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("see") && getArgc(cmd) == 2) {
 			sender.sendMessage("§bVous devez trouver :");
 					sender.sendMessage(bingo.toString());
 			r = true;
-		} else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("reset")) {
-			sender.sendMessage("§aLe bingo est réinitialisé, tapez /bingo generate pour recommencer une partie"); 
+		}
+		
+		/****************
+		 * /bingo reset *
+		 ****************/
+		else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("reset") && getArgc(cmd) == 2) {
+			if(bingo.isActive()) {
+				sender.sendMessage("§aLe bingo est réinitialisé, tapez /bingo generate pour recommencer une partie");
+				bingo.resetBingo();	
+			}
 			r = true;
-		} else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("item")) {
+		}
+		
+		/*****************************
+		 * /bingo item [get | unget] id *
+		 *****************************/
+		else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("item") && getArgc(cmd) == 4) {
 			if(args[1].equalsIgnoreCase("get")) {
 				bingo.getListe().get(Integer.parseInt(args[2])-1).itemPicked();
 				Bukkit.broadcastMessage("§5L'objet " + bingo.getListe().get(Integer.parseInt(args[2])-1).getM().toString() + " vient d'être récupéré par " + sender.getName() + ".");
@@ -73,25 +77,55 @@ public class CommandBingo implements CommandExecutor {
 			else {
 				r = false;
 			}
-		} else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("tpall")) {
-			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+		}
+		
+		/****************************
+		 * /bingo tpall {worldName} *
+		 ****************************/
+		else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("tpall")) {
 			int tmpI = 1;
-			for(Player p : Bukkit.getOnlinePlayers()) {
-				Bukkit.broadcastMessage("§5Téléportation de " + p.getName() + " vers le monde de la partie en cours (" + tmpI + "/)" + Bukkit.getOnlinePlayers().size() + ")");
-				Bukkit.dispatchCommand(console, "mvtp " + p.getName() + " game");
-				try {
-					TimeUnit.MILLISECONDS.sleep(200);
-					++tmpI;
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			if(getArgc(cmd) == 2) {
+				for(Player p : Bukkit.getOnlinePlayers()) {
+					Bukkit.broadcastMessage("§5Téléportation de " + p.getName() + " vers le monde de la partie en cours (" + tmpI + "/)" + Bukkit.getOnlinePlayers().size() + ")");
+					Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), "mvtp " + p.getName() + " game");
+					try {
+						TimeUnit.MILLISECONDS.sleep(200);
+						++tmpI;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
-				
-				
+			} else {
+				for(Player p : Bukkit.getOnlinePlayers()) {
+					Bukkit.broadcastMessage("§5Téléportation de " + p.getName() + " vers le monde de la partie en cours (" + tmpI + "/)" + Bukkit.getOnlinePlayers().size() + ")");
+					Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), "mvtp " + p.getName() + " " + args[1]);
+					try {
+						TimeUnit.MILLISECONDS.sleep(200);
+						++tmpI;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 			r = true;
 		}
+		
+		/***************
+		 * /bingo help *
+		 ***************/
+		else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("help") && getArgc(cmd) == 2) {
+			sender.sendMessage(bingo.getHelp("help"));
+			r = true;
+		}
+		
+		/**************************
+		 * /bingo help {helpPage} *
+		 **************************/
+		else if(cmd.getName().equalsIgnoreCase("bingo") && args[0].equalsIgnoreCase("help") && getArgc(cmd) == 3) {
+			sender.sendMessage(bingo.getHelp(args[1]));
+			r = true;
+		}
+		
 		return r;
 	}
-
 }

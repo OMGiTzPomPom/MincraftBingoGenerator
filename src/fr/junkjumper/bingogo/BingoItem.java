@@ -26,5 +26,4 @@ public class BingoItem {
 	public void itemUnpicked() {
 		this.get = false;
 	}
-	
 }
