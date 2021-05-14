@@ -48,4 +48,4 @@ Vous pouvez entrer ``/bingo help pour avoir des explications In-Game``. Mais voi
 
 ## 5 - Licence
 
-[![logo](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/) Ce plugin est disponible sous licence [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (Voir [LICENSE.md](https://github.com/JunkJumper/MincraftBingoGenerator/blob/master/LICENSE.md)).
+[![logo](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/) Ce plugin est disponible sous licence [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/deed.fr) (Voir [LICENSE.md](https://github.com/JunkJumper/MincraftBingoGenerator/blob/master/LICENSE.md)).
